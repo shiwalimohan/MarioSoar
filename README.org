@@ -1,0 +1,6 @@
+* Related Publicatios
+Shiwali Mohan and John Laird. An Object-Oriented Approach to Reinforcement Learning in an Action Game. In Proceedings of 7th the Artificial Intelligence for Interactive Digital Entertainment Conference, AIIDE, 2011.
+
+Shiwali Mohan and John Laird. Relational Reinforcement Learning in Infinite Mario. In Proceedings of the 24th AAAI Conference on Artificial Intelligence, AAAI, 2010. (Extended Abstract).
+
+Shiwali Mohan and John E. Laird. Learning to Play Mario. Technical Report CCA-TR-2009-03, Center for Cognitive Architecture, University of Michigan, Ann Arbor, Michigan, 2009.
