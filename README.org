@@ -1,4 +1,8 @@
-* Related Publicatios
+* Running Instructions
+1. Download and install [[http://2009.rl-competition.org/software.php#download][RL-Competition 2009 software]].
+2. Download and install [[http://code.google.com/p/soar/wiki/Downloads?tm%3D2][Soar]].
+
+* Related Publications
 *Shiwali Mohan* and John Laird. An Object-Oriented Approach to Reinforcement Learning in an Action Game. In Proceedings of 7th the Artificial Intelligence for Interactive Digital Entertainment Conference, AIIDE, 2011.
 
 *Shiwali Mohan* and John Laird. Relational Reinforcement Learning in Infinite Mario. In Proceedings of the 24th AAAI Conference on Artificial Intelligence, AAAI, 2010. (Extended Abstract).
