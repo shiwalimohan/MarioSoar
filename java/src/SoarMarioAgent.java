@@ -28,8 +28,6 @@ public class SoarMarioAgent implements AgentInterface{
 	private SoartoGlue outputFromSoar;
 	private double Reward;
 	private static String productions;
-	private static String logFile;
-	private static PrintWriter log;
 	private static String csvFile;
 	private static PrintWriter csv;
 	
@@ -157,7 +155,6 @@ public class SoarMarioAgent implements AgentInterface{
 		agent.InitSoar();
 		inputToSoar.reset();
 		System.out.println("Soar Inititalized. Episode : " +episode +" Reward :" + Reward);
-		log.write("Soar Inititalized. Episode : " +episode +" Reward :" + Reward + "\n");
 		csv.write(Reward+"\n");
 		episode++;
 	}
@@ -263,55 +260,52 @@ public class SoarMarioAgent implements AgentInterface{
 			System.exit(0);
 		}
 		
-		logFile = "logs/log" + System.nanoTime()/100000000;
-		log = new PrintWriter(logFile);
 		
 		Properties configFile = new Properties();
 		FileInputStream in = new FileInputStream(args[0]);
 		configFile.load(in);
 		
 		prod = configFile.getProperty("productions");
-		log.write("Productions : " + prod + "\n");
-		productions = "agents/mario-soar-" + prod + ".soar";
+		
+		productions = prod;
 		
 		learningPolicy = configFile.getProperty("learning-policy", "sarsa");
-		log.write("Learning Policy : " + learningPolicy + "\n"); 
+		
 		
 		learningRate = Double.parseDouble(configFile.getProperty("learning-rate", "0.3"));
-		log.write("Learning Rate : " + learningRate + "\n"); 
+		
 			
 		discountRate = Double.parseDouble(configFile.getProperty("discount-rate", "0.9"));
-		log.write("Discount Rate : " + discountRate + "\n"); 
+		
 		
 		eligibilityTraceDR = Double.parseDouble(configFile.getProperty("eligibility-trace-decay-rate", "0"));
-		log.write("Eligibility trace  decay rate: " + eligibilityTraceDR + "\n"); 
-		
+				
 		eligibilityTraceT = Double.parseDouble(configFile.getProperty("eligibility-trace-tolerance", "0.001"));
-		log.write("Eligibility trace tolerance : " + eligibilityTraceT + "\n"); 
+		
 		
 		explorationPolicy = configFile.getProperty("exploration", "epsilon-greedy");
-		log.write("Exploration Policy : " + explorationPolicy + "\n"); 
+		
 		
 		explorationEpsilon = configFile.getProperty("epsilon", "0.1");
-		log.write("Exploration epsilon : " + explorationEpsilon + "\n"); 
+		
 		
 		explorationTemperature = configFile.getProperty("temprature", "25");
-		log.write("Exploration temprature : " + explorationTemperature + "\n"); 
+		
 		
 		autoReduce = configFile.getProperty("auto-reduce", "off");
-		log.write("Auto Reduce : " + autoReduce+ "\n"); 
+		
 		
 		reductionPolicy = configFile.getProperty("reduction-policy", "exponential");
-		log.write("Reduction Policy : " + reductionPolicy+ "\n"); 
+		
 		
 		reductionRate = Double.parseDouble(configFile.getProperty("reduction-rate", "0.9"));
-		log.write("Reduction Rate : " + reductionRate+ "\n");
+		
 		
 		loadRLRules = configFile.getProperty("load-rl-rules", "no");
-		rlRuleFile = "agents/mario-soar-" + prod +"/"+ configFile.getProperty("rl-rules-file")+".soar";
+		rlRuleFile = configFile.getProperty("rl-rules-file");
 		saveRLRules = configFile.getProperty("save-rl-rules", "no");
 		
-		csvFile =  "agents/mario-soar-" + prod +"/"+ configFile.getProperty("csv")+".csv";
+		csvFile = configFile.getProperty("data-file");
 		
 		
 		new AgentLoader(new SoarMarioAgent()).run();
@@ -329,7 +323,6 @@ public class SoarMarioAgent implements AgentInterface{
 		
 		kernel.Shutdown();
 		kernel.delete();
-		log.close();
 		csv.close();
 	}
 }
