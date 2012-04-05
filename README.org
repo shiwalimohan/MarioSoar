@@ -6,9 +6,10 @@
    local install of the competition software
 5. Configure $AGENT_HOME to point to the topmost directory of your
    local install of MarioSoar
-6. make clean;make
-7. Run the agent ./run.bash config/combined.config
-8. cd to trainer $COMP_HOME/trainers/guiTrainerJava/ for GUI
+6. cd $AGENT_HOME
+7. make clean;make
+8. Run the agent ./run.bash config/combined.config
+9. cd to trainer $COMP_HOME/trainers/guiTrainerJava/ for GUI
    trainter and ./run.bash or $COMP_HOME/trainers/consoleTrainerJava/
    for headless trainer
 
